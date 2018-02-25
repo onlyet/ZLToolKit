@@ -38,7 +38,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
-
+#include <type_traits>
 using namespace std;
 
 namespace ZL {
@@ -50,12 +50,19 @@ public:
 	}
 	template<typename T>
 	_StrPrinter& operator <<(const T& data) {
+        if(std::is_function<T>::value){
+            //data是函数则返回
+            return *this;
+        }
 		ss << data;
 		return *this;
 	}
 	string operator <<(std::ostream&(*f)(std::ostream&)) const {
 		return ss.str();
 	}
+    operator string (){
+        return ss.str();
+    }
 private:
 	stringstream ss;
 };
