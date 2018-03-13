@@ -29,3 +29,9 @@
 /X64/
 
 *.DS_Store
+
+.vs/
+ZLToolKit.sln
+ZLToolKit.vcxproj
+ZLToolKit.vcxproj.filters
+ZLToolKit.vcxproj.user
